@@ -1,0 +1,47 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+AddItem.propTypes = {
+ name: PropTypes.string.isRequired,
+ age: PropTypes.string.isRequired,
+ zipcode: PropTypes.string.isRequired,
+};
+
+<form className="form-inline">
+ <input
+     type="text"
+     className="form-control mb-2 mr-sm-2 mb-sm-0"
+     placeholder="name"
+     ref={input => this.name = input}/>
+ <div className="input-group mb-2 mr-sm-2 mb-sm-0">
+   <input
+     type="text"
+     className="form-control"
+     placeholder="age"
+     ref={input => this.age = input}/>
+</div>
+<div className="input-group mb-2 mr-sm-2 mb-sm-0">
+   <input
+     type="text"
+     className="form-control"
+     placeholder="zipcode"
+     ref={input => this.zipcode = input}/>
+ </div>  
+ <button 
+     type="submit" 
+     className="btn btn-primary">Save
+ </button>
+</form>
+
+onSubmit = event => {
+ event.preventDefault();
+ const name = this.name.value;
+ const age = this.age.value;
+ const zipcode = this.zipcode.value;
+ const info = {name: name, age: age, zipcode: zipcode};
+ const data = this.state.data;
+ data.push(info);
+ this.setState({
+   data: data
+ });
+};
